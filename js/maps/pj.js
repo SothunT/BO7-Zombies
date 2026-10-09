@@ -1,0 +1,105 @@
+MAPS.push({
+id:"pj", slug:"paradox-junction", name:"Paradox Junction", color:"#c9970c", season:"Season 2 Reloaded", date:"Mar 12, 2026",
+blurb:"Nuketown in two timelines: the burned-out present (Nuked Town) and the clean 1950s past (Clean Town). You hop between them through the time storm after the first dog round.",
+ww:"Blundergat → Sundergat", boss:"Dark Heart", reward:"Animated calling card",
+mapImg: MGMAP("paradox-junction"),
+
+wwInfo:{what:"Build the Blundergat from four parts spread across both timelines, then charge its bench with three tortured souls to upgrade it into the Sundergat, which the quest needs.",
+ steps:["<b>Barrel:</b> fill the yellow spore/cyst soul boxes in Nuked Town until one drops it.","<b>Sealant:</b> bottom shelf of the bookcase, upstairs bedroom of the Clean Town yellow house.","<b>Stock:</b> three Nuked Town walls have black goo (yellow garage, top of the green house stairs, right of the Trinity Ave perk). The one that makes noise is yours — blow up the same wall in Clean Town, then collect the stock from the hole in Nuked Town.","<b>Hammer:</b> take the acid vial from the yellow house (Nuked), fill it at the green house sink (3 uses), pour it on the humming mannequin's face in Clean Town, then take the hammer from it in Nuked Town.","Melee the workbench in the middle truck (Nuked) and craft.","<b>Sundergat:</b> each round a fire tornado drops a tortured soul (alley by Wunderfizz or behind either house). Lead it to the truck bench without letting zombies drain it and kill it there. Three times — the third is a Shock Mimic. In Clean Town melee the bench and insert the Blundergat; collect the Sundergat in Nuked Town."],
+ tips:["Wait until late in the round for the tornado souls — fewer zombies to drain them.","Directed Mode completion also gives a Blundergat blueprint."]},
+
+speedIntro:"Follows the Google doc's timeline order: do every Nuked Town pickup on one pass, every Clean Town pickup on the next, so you never hop through the storm for a single item.",
+steps:[
+{id:"p1",t:"Nuked Town prep (before the first dog round)",loc:"Nuked Town",b:["Open doors to get the truck keys from the corpse by the yellow house backyard fence.","Take the acid vial from the desk at the top of the yellow house and fill it at the green house sink.","Listen to the three goo walls — note which one makes noise. Note any mannequin that hums.","Start filling the yellow spore soul boxes for the Blundergat barrel."]},
+{id:"p2",t:"Pack-a-Punch",loc:"Clean Town",gate:"After the first dog round",b:["After the Rad-Hound round you're pulled into the past. Use the keys to move the truck blocking the road.","Shoot the floating orbs (time knots) — they release Pack-a-Punch."]},
+{id:"p3",t:"Clean Town parts",loc:"Clean Town",b:["Shoot the left swing seat off the yellow house backyard swing set and pick it up.","Blow up the wall that matched the noisy goo wall (stock).","Pour acid on the humming mannequin (hammer).","Sealant: bottom shelf of the yellow house upstairs bookcase."]},
+{id:"p4",t:"Craft the Blundergat",loc:"Nuked Town · middle truck",b:["Collect the stock from the broken wall and the hammer from the melted mannequin; have the barrel and sealant.","Melee the truck workbench and craft."],ph:[["Bench",SK("69b2bbde918c23.37869553")]]},
+{id:"p5",t:"RC-XD → chalk → swing cutscene",loc:"Nuked Town",gate:"Round 8+",b:["RC-XD remote: yellow garage shelf, right of the crate beside PaP, or behind the fence at the back of the green house.","Drive onto the boxes, jump to the broken house, through the broken garage door, and blow up the barrel. Take the chalk inside the Trinity St garage.","Put the chalk and swing seat on the Nuked Town swing set → Twins cutscene."],ph:[["RC-XD route",SK("69b2b89bd834a8.22383499")]]},
+{id:"p6",t:"Seed, tree and firewood",loc:"Both timelines",b:["Seed: red toolbox in the yellow garage (Nuked).","Clean Town: plant it in the dirt bed by the back-left red house on Trinity St and fill it with Blundergat kills.","Nuked Town: throw a Combat Axe at the grown tree three times for firewood.","Clean Town: put the firewood in the yellow house fireplace and Molotov it."],ph:[["Tree",SK("69b2b8b4a0d365.97379221")]]},
+{id:"p7",t:"Headset and goggles → toy box",loc:"Nuked Town",b:["Headset (Death Perception helps): behind the trash can at spawn/by the bus, top shelf upstairs, or in the mannequin hand by the yellow house fence.","Goggles: shoot them off the top of the pole left of PaP, then grab them through the fence with Wisp Tea.","Put both in the toy box on Trinity St."],ph:[["Headset",SK("69b2bcb0bb7e31.79298563")]]},
+{id:"p8",t:"Piano",loc:"Green house backyard → piano",b:["The Music Teacher spawns in the back of the green house garden (can take a few minutes). Brain Rot her or use a Psyche Grenade — she walks inside and plays.","Teleport to Clean Town quickly; she opens the piano. Play 8-6-7-5-6-5-3-5 (or collect the 8 blinking notes in order of their blink count)."],ph:[["Piano",SK("69b2bc544dc801.02319678")],["Notes map",SK("69b2b92ea25924.61645122")]]},
+{id:"p9",t:"Four square",loc:"Nuked → Clean",b:["Shoot the ball down (a Trinity St roof, the stacked boxes on Trinity St, or the yellow backyard pillar) and shoot it onto the X behind the green house garage.","In Clean Town play four square with melee hits — no double bounce, no going out — for about 30 seconds. Fill the soul box that appears with Sundergat kills and walk it to the toy box."],ph:[["Boxes",SK("69b2b954782682.51226366")],["Squares",SK("69b2bce10a3f04.66183809")]]},
+{id:"p10",t:"Upgrade to Sundergat",loc:"Middle truck (both timelines)",b:["Three tortured-soul tornado zombies killed at the bench (the third is a Shock Mimic), then swap the Blundergat in Clean Town. Needed for the remaining soul boxes."],ph:[["Sundergat",SK("69b2bbeb3ee1e5.45980869")]]},
+{id:"p11",t:"Hopscotch, jacks and the music box",loc:"Trinity St driveway",b:["Nuked Town: stand on the X by the big driveway until it glows, then shoot the three zombies floating outside the map so their orbs land there.","Clean Town: hopscotch 1 → 12 → 1 without touching the black cloud.","Play jacks at the toy box: kill the airborne zombies before the ball lands, five times. Escort the soul box (music box / sheet music) with Sundergat kills."],ph:[["X",SK("69b2bc262c4c98.02210257")],["Second X",SK("69b2bc8a518556.50231240")]]},
+{id:"p12",t:"Clock → start the boss",loc:"Green house roof → swing set",b:["Nuked Town: shoot the roof clock's hands until both point at 12 (“0”).","Shoot the red hand while you interact with the portal to Clean Town.","Follow the orb and Twins (piano, toy bench, fireplace) and talk to them at the yellow house swing set."],ph:[["Clock",SK("69b2bd0f406fd5.97579942")]]},
+{id:"p13",t:"Boss: Dark Heart",loc:"Nuketown",b:["Phase 1: clear three spores (each house's backyard, then Trinity St), protect each artifact, then shoot the glowing crits.","Phase 2: same, but shoot orbs to spawn tethered zombies instead of spores.","Phase 3: lead fire-tornado souls to the spores and kill them there.","Brain Rot + Monkey Bombs carry this fight."],ph:[["Stage 1",SK("69b2bd9482cc44.29253149")],["Stage 2",SK("69b2bd9f2a4ee8.24730535")],["Stage 3",SK("69b2bda7b6bbb2.55284146")]]}
+],
+speed:["p1","p2","p3","p4","p5","p7","p6","p8","p10","p9","p11","p12","p13"],
+speedNotes:{p1:"Also shoot the roof clock to 1:15 now for free loot on your first trip to the past.",p4:"Once the Blundergat exists, do the Masked Mannequin Head side egg — multiple PaP-3 crystals make the rest of the run easy.",p5:"The RC-XD garage also holds a purple-cyst head and a Super EE Peeks part.",p10:"Upgrade before the soul-box mini-games; they need Sundergat kills."},
+
+side:[
+{t:"Masked Mannequin Head",r:"High-tier loot: PaP-3 crystals, Legendary tools, perks",req:"Blundergat built",b:["Clean Town: interact with the masked mannequin head on the green house floor.","Follow it to three headless mannequins — green house backyard, yellow house garage, yellow house upstairs — and fill each with kills.","The head attaches to the last one, spins and explodes into loot. Best value on the map."]},
+{t:"Purple Cyst",r:"Free perks, salvage and up to a Flawless Aetherium Crystal (PaP 3)",req:"Blundergat built",b:["The cyst is in the Nuked green house backyard. Place the items, fill it with kills, then kill the HVT:","<b>Deadshot Daiquiri</b> (+salvage): Head (Nuked Trinity Ave garage, opened with RC-XD), Bone (fence behind the green backyard), Guts (under the truck by PaP), Ham (Clean green house kitchen counter). HVT: Doppelghast.","<b>Elemental Pop:</b> Battery (Clean Town truck by the Blundergat bench), Bone, Guts, Ham. HVT: Mimic.","<b>Quick Revive:</b> Dog Collar (Clean Town, between plants by the red house garage door), Bone, Ham. HVT: Rad-Hound.","<b>Vulture Aid:</b> Bucket (Clean Town, door between the yellow garage and backyard), Bone, Ham.","<b>Speed Cola + crystal:</b> all seven items. Before round 15 gives a Refined crystal (PaP 2); after round 15 a Flawless crystal (PaP 3)."]},
+{t:"115 Clock",r:"Legendary weapon, killstreak, blue Aether Tool, Raw Aetherium Crystal (PaP 1), perk can",b:["Nuked Town: stand on the cul-de-sac bus and shoot the roof clock's hands to 1:15.","The loot spawns at the back of the cul-de-sac in Clean Town."]},
+{t:"Dissolving Mannequins",r:"Random perk power-up",b:["With the acid vial (3 doses; refill at the Nuked green house sink), pour acid on every mannequin in Clean Town.","After the last one dissolves, the perk is waiting in Nuked Town."]},
+{t:"Bunker",r:"Mystery perk can + loot",req:"Blundergat built",b:["Clean Town: turn on the yellow house stove, kill a zombie beside it, Molotov the pan.","Nuked Town: teleport back and forth until Bonus Points appears on the table where a mannequin sits.","Clean Town: charm zombies (Brain Rot / Psyche Grenade) so they knock on the green backyard bunker until it opens. The loot is in Nuked Town."]},
+{t:"Lost Key",r:"Free Aether Tool + salvage + essence",req:"Death Perception",b:["In Clean Town, shoot flower pots that show a key outline to collect Lost Keys (teleport away and back to refresh empty pots).","With 5 keys, open the suitcase in the Clean green house upstairs bedroom."]},
+{t:"Stalking Mannequin",r:"High-rarity loot",req:"Blundergat built",b:["Nuked Town: at the Trinity Ave perk, stare at the off-map mannequin on the right until its head turns. It follows you.","Clean Town: find and headshot it — truck driver's seat on Trinity Ave, behind the fences left of PaP, the shed behind the Mystery Box in the green backyard, or the left house chimney on Trinity Ave."]},
+{t:"Mini golf",r:"Max Armor + Insta-Kill + Bonus Points (Clean) · 500 essence (Nuked)",b:["Clean yellow backyard: sink the white-flag hole in 1–2 shots for all three (more shots = one power-up).","Nuked yellow backyard: sink it for 500 essence."]},
+{t:"Power-up statues",r:"7 free power-ups, then Fire Sale and a random perk",b:["Bonus Points: debris inside the house left of PaP (Nuked Trinity Ave).","Insta-Kill: top of the BBQ outside the Clean green backyard.","Double Points: behind the fences right of the houses at the back of the Nuked cul-de-sac.","Nuke: top of the Clean Town clock tower, seen from the green backyard.","Full Power: by the drawers opposite the TV, Clean green house upstairs.","Max Armor: bench inside the yellow bus (Nuked cul-de-sac).","Max Ammo: top of the generator by the yellow house (Clean).","Fire Sale (after 7): top room of the Nuked yellow house, seen from the back of the cul-de-sac.","Random Perk (after all): top of the cabinet behind the bunk bed, Clean yellow house upstairs."]},
+{t:"TV jumpscare",r:"Jumpscare",b:["Nuked green house: shoot the roof antenna until it lines up with the red orb, then flip the TV until the channel turns green and interact again."]},
+{t:"Song: “Come Back Down”",r:"Music (Kevin Sherwood & Megan Rice)",b:["Clean yellow house, upstairs nightstand.","Under a truck on Nuked Trinity Ave.","By the perk at Clean Trinity Ave."]}
+],
+
+relicNote:"Relics need this map's main quest done once. Paradox Junction trials are timed waves.",
+relics:[
+{n:"Rocket",tier:"grim",e:"No scorestreaks.",trial:"Enemies only take damage from their elemental weakness.",u:["After round 20: Brain Rot a dog in Clean Town and pet it.","In Nuked Town, call a D.A.W.G., set it to sentry mode and pet it."]},
+{n:"Summoning Key",tier:"sin",e:"Zombies explode on death and hurt nearby players.",trial:"Each wave must be cleared in 90 seconds.",u:["Throw a grenade into the Nuked green house chimney for a collar.","Brain Rot a dog in the Clean yellow backyard so it digs up a ball; take it.","After round 40, place both at the tombstone in the Nuked green back garden."]},
+{n:"Mangler Helmet",tier:"wic",e:"No Arsenal.",trial:"No armor and max health cut by 50.",u:["Spin the Mystery Box until Mr. Peeks appears; use the Mr. Peeks field upgrade to move him to the mailbox outside the yellow house — in both timelines.","After round 60, open the mailbox for the knife and kill the Mimic HVT with it. Portal: Nuked green house balcony."]}
+],
+
+intel:[
+{k:"Audio log",n:"The Search Begins",a:"Yellow House",loc:"Nuked, upstairs, caved-in roof over the beds",ch:"Top Bunk Taken"},
+{k:"Audio log",n:"Run Aground",a:"Green House",loc:"Nuked, upstairs dresser",ch:"Camper's Delight"},
+{k:"Audio log",n:"Live Air",a:"Yellow Backyard",loc:"Clean, on the oven",ch:"Pizza Party!"},
+{k:"Audio log",n:"Dead Air",a:"Green House",loc:"Nuked, on the deck",ch:"Viewing Deck"},
+{k:"Audio log",n:"Head Cannon",a:"Trinity Ave",loc:"Clean, on a truck hood",ch:"Supply Drop"},
+{k:"Audio log",n:"Makin' It Right",a:"Trinity Ave",loc:"Nuked, on a car hood",ch:"Gold Star Driving"},
+{k:"Audio log",n:"Before Times",a:"Yellow Backyard",loc:"Nuked, shed drawings",ch:"Check the Shed"},
+{k:"Audio log",n:"Storm Coming",a:"Green Backyard",loc:"Clean, storm-cloud drawing (after Before Times)",ch:"Plant Life"},
+{k:"Audio log",n:"Trickery",a:"Trinity Ave",loc:"Nuked, drawing on a crate (after the earlier drawings)",ch:"Attempted Delivery"},
+{k:"Audio log",n:"Aftermath",a:"Cul-de-Sac",loc:"Clean, back of the population counter (after the drawings)",ch:"Pop. 4"},
+{k:"Document",n:"Paper Hearts",a:"Green House",loc:"Nuked, table by the stairs",ch:"Stop Stairing"},
+{k:"Document",n:"Helpful Information",a:"Yellow House",loc:"Clean, table inside",ch:"Can We Get a Booth?"},
+{k:"Document",n:"Wanted Man",a:"Trinity Ave",loc:"Clean, on a fence",ch:"Picketer"},
+{k:"Artifact",n:"Sidewalk Chalk",a:"Trinity Ave",loc:"Main quest"},
+{k:"Artifact",n:"Sundergat",a:"Cul-de-Sac",loc:"Upgrade the Wonder Weapon"},
+{k:"Artifact",n:"Music Box",a:"Yellow House",loc:"Main quest"},
+{k:"Artifact",n:"Headset",a:"Trinity Ave",loc:"Main quest"},
+{k:"Artifact",n:"Goggles",a:"Trinity Ave",loc:"Main quest"}
+],
+
+areas:["Cul-de-Sac","Yellow House","Yellow Backyard","Green House","Green Backyard","Trinity Ave"],
+pins:[
+{a:"Cul-de-Sac",c:"ww",n:"Middle truck bench",d:"Craft and upgrade the Blundergat."},
+{a:"Cul-de-Sac",c:"egg",n:"115 clock (from the bus)",d:"Set to 1:15 in Nuked Town."},
+{a:"Cul-de-Sac",c:"pu",n:"Max Armor / Double Points / Fire Sale",d:"Bus bench; behind the back fences; top of the Nuked yellow house."},
+{a:"Yellow House",c:"ww",n:"Sealant / acid vial",d:"Clean bookcase; Nuked top desk."},
+{a:"Yellow House",c:"quest",n:"Fireplace",d:"Firewood + Molotov (Clean)."},
+{a:"Yellow House",c:"music",n:"Headset (Clean)",d:"Upstairs nightstand."},
+{a:"Yellow House",c:"perk",n:"Random perk statue",d:"Behind the bunk bed (Clean, after all others)."},
+{a:"Yellow House",c:"quest",n:"Seed",d:"Red toolbox in the garage (Nuked)."},
+{a:"Yellow Backyard",c:"quest",n:"Swing set",d:"Seat (Clean) → chalk + seat (Nuked) → boss start."},
+{a:"Yellow Backyard",c:"egg",n:"Mini golf",d:"Both timelines."},
+{a:"Yellow Backyard",c:"quest",n:"Truck keys",d:"Corpse by the fence."},
+{a:"Yellow Backyard",c:"pu",n:"Max Ammo",d:"Generator top (Clean)."},
+{a:"Green House",c:"quest",n:"Sink / piano / roof clock",d:"Acid refill, the piano and the boss clock."},
+{a:"Green House",c:"egg",n:"Masked head / suitcase",d:"Masked head on the floor (Clean); Lost Key suitcase upstairs."},
+{a:"Green House",c:"pu",n:"Full Power",d:"Upstairs by the drawers (Clean)."},
+{a:"Green Backyard",c:"egg",n:"Purple Cyst / bunker",d:"Cyst (Nuked); bunker knocks (Clean)."},
+{a:"Green Backyard",c:"relic",n:"Summoning Key tombstone",d:"Nuked back garden, round 40+."},
+{a:"Green Backyard",c:"pu",n:"Insta-Kill",d:"BBQ top (Clean)."},
+{a:"Trinity Ave",c:"quest",n:"Garage (RC-XD) / toy box / X",d:"Chalk, toy box, hopscotch driveway."},
+{a:"Trinity Ave",c:"music",n:"Headsets 2–3",d:"Under the Nuked truck; by the Clean perk."},
+{a:"Trinity Ave",c:"egg",n:"Stalking Mannequin",d:"Off-map by the Nuked perk."},
+{a:"Trinity Ave",c:"pu",n:"Bonus Points",d:"Debris in the house left of PaP (Nuked)."}
+],
+
+toy:{name:"Twin Dolls",prep:"Equip a Psyche Grenade. Open the map and turn on Pack-a-Punch first.",
+ steps:[["Chalk toy box","Clean Town: interact with the chalk drawing on the garage door near the temporal portal. Upstairs in the yellow house, throw a Psyche Grenade at the chalk question mark — it becomes a key. Use it on the drawing; a real toy box appears.",[["Garage chalk",SK("6ab2925bb52b54.13848176")],["Question mark",SK("6ab2926b6ae898.06509236")]]],
+  ["Ms. Peeks parts","Nuked Town spots: yellow house upstairs; bunker in the green backyard; rack inside the chalk garage; roof of the first Trinity Ave house on the right; slanted roof past the Wunderfizz alley; truck bed by PaP. Collected parts appear on the bus.",[["Parts",SK("6ab29276ed6213.06457928")]]],
+  ["Peeks chase","Interact with the glowing parts on the bus and touch the teleporting Peeks before the timer runs out (more time in solo).",[["Chase",SK("6ab2928a2663f6.06106037")]]],
+  ["Claim and exfil","Put Ms. Peeks in the toy box for the Twin Dolls, then exfil.",[["Twin Dolls",SK("6ab29297a276b0.05680029")]]]]},
+codes:"pj",
+src:[["MargwaNetwork — Paradox Junction","https://margwa.net/paradox-junction"],["BO7 Easter Eggs (Google Doc)","https://docs.google.com/document/u/0/d/1zFsG8A0BA_jUt8BNoAd2lmw36OR35ecOzicHwoXsexw/mobilebasic"],["Skycoach — main quest","https://skycoach.gg/blog/call-of-duty/articles/paradox-junction-easter-egg-guide"],["Boostmatch — side eggs","https://boostmatch.gg/blog/call-of-duty/articles/paradox-junction-easter-eggs-guide-black-ops-7-zombies"],["Skycoach — Super EE","https://skycoach.gg/blog/call-of-duty/articles/super-easter-egg-guide"]]
+});
