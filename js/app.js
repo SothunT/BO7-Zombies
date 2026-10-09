@@ -467,10 +467,11 @@ function openPhoto(btn){
   const credit = pg ? `<a href="${esc(pg)}" target="_blank" rel="noopener">${esc(srcName(pg))}</a>` : esc(srcName(o));
   btn.hidden=true; btn.setAttribute("aria-expanded","true");
   const fig=document.createElement("figure"); fig.className="phfig";
-  fig.innerHTML=`<img src="${esc(u)}" alt="${esc(l)}" referrerpolicy="no-referrer" decoding="async" tabindex="0" title="Tap to shrink"><figcaption><span>${l} · image: ${credit}</span><a href="${esc(u)}" target="_blank" rel="noopener">Open full size</a></figcaption>`;
+  fig.innerHTML=`<img src="${esc(u)}" alt="${esc(l)}" referrerpolicy="no-referrer" decoding="async" tabindex="0" title="Tap to shrink"><figcaption><span>${l} · image: ${credit}</span><button type="button" class="linkbtn phbig">View full size</button></figcaption>`;
   const img=fig.querySelector("img"); let triedOrig=false;
   img.addEventListener("error",()=>{
-    if(!triedOrig && o){ triedOrig=true; img.src=o; fig.querySelector("figcaption a").href=o; return; }
+    if(!triedOrig && o){ triedOrig=true; img.src=o; return; }
+    fig.querySelector(".phbig").hidden=true;
     img.outerHTML=`<div class="fail" tabindex="0" role="button">${esc(l)} couldn't load. <a href="${esc(o||u)}" target="_blank" rel="noopener">Open it on ${srcName(o||u)}</a> · tap to close</div>`;
   });
   wrap.style.display="block"; wrap.style.flex="1 0 100%";
@@ -481,7 +482,26 @@ function closePhoto(fig){
   fig.remove(); wrap.style.display=""; wrap.style.flex="";
   btn.hidden=false; btn.setAttribute("aria-expanded","false"); btn.focus({preventScroll:true});
 }
+/* Lightbox: "View full size" shows the photo over the dimmed page. Clicking anywhere
+   except the credit link (image, X or backdrop) closes it, and so does Esc (native <dialog>). */
+let lb=null, lbFrom=null;
+function lightbox(img, caption, from){
+  if(!lb){
+    lb=document.createElement("dialog"); lb.className="lb"; lb.setAttribute("aria-label","Full size photo");
+    lb.innerHTML=`<button type="button" class="lb-x" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button><img alt="" referrerpolicy="no-referrer" title="Tap to close"><div class="lb-cap"></div>`;
+    lb.addEventListener("click",e=>{ if(!e.target.closest("a")) lb.close(); });
+    lb.addEventListener("close",()=>{ document.body.classList.remove("noscroll"); lb.querySelector("img").removeAttribute("src"); if(lbFrom) lbFrom.focus({preventScroll:true}); });
+    document.body.appendChild(lb);
+  }
+  const big=lb.querySelector("img"); big.src=img.currentSrc||img.src; big.alt=img.alt;
+  lb.querySelector(".lb-cap").innerHTML=caption;
+  lbFrom=from; document.body.classList.add("noscroll");
+  lb.showModal(); lb.querySelector(".lb-x").focus({preventScroll:true});
+}
+
 document.addEventListener("click",e=>{
+  const big=e.target.closest("button.phbig");
+  if(big){ const fig=big.closest(".phfig"), img=fig.querySelector("img"); if(img) lightbox(img, fig.querySelector("figcaption span").innerHTML, big); return; }
   const btn=e.target.closest("button.ph[data-src]");
   if(btn){ openPhoto(btn); return; }
   const all=e.target.closest("button.phall");
