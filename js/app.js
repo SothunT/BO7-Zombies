@@ -70,11 +70,33 @@ function tabCount(m,k){
   return n ? ` <small class="cnt">${n}</small>` : "";
 }
 
+/* Wonder Weapon steps: {t, loc, gate, b:[...], spots:[{h, list:[[label,url,page]]}], ph:[...], q:[main-quest step ids]}.
+   "spots" are the possible locations of a part, shown as an always-visible thumbnail grid for quick checks
+   mid-game; "ph" plus the photos of the linked main-quest steps stay collapsed behind photo buttons. */
+const spotGrid = g => `<div class="spots"><div class="how">${g.h}</div><div class="spot-grid">${g.list.map(([l,u,pg])=>`<figure class="spot"><button type="button" class="spot-img" data-src="${esc(LOCAL(u))}" data-orig="${esc(u)}" aria-label="Enlarge: ${esc(strip(l))}"><img src="${esc(LOCAL(u))}" data-orig="${esc(u)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button><figcaption>${l}<span>${pg?`<a href="${esc(pg)}" target="_blank" rel="noopener">${esc(srcName(pg))}</a>`:esc(srcName(u))}</span></figcaption></figure>`).join("")}</div></div>`;
 function pWW(m,p){
+  const byId = Object.fromEntries(m.steps.map(s=>[s.id,s])), num = Object.fromEntries(m.steps.map((s,i)=>[s.id,i+1]));
+  const steps = m.wwInfo.steps.map(s=>typeof s==="string"?{t:s}:s);
+  const nSpots = steps.reduce((n,s)=>n+(s.spots||[]).reduce((k,g)=>k+g.list.length,0),0);
   p.innerHTML = `<h3 class="sec">${m.ww}</h3><p class="lede">${m.wwInfo.what}</p>
-  <ol class="steps">${m.wwInfo.steps.map((s,i)=>`<li class="step"><div class="num"><label>${i+1}</label></div><div class="st-body"><p class="st-title" style="font-weight:500">${s}</p></div></li>`).join("")}</ol>
-  <h3 class="sec">Tips</h3>${ul(m.wwInfo.tips)}
-  <div class="note">The full step-by-step with photos is in the <b>Main Quest</b> tab — the Wonder Weapon is part of it.</div>`;
+  ${nSpots?`<div class="note">Every possible spot is pictured below (${nSpots} location photos). Tap a thumbnail to see it full size.</div>`:""}
+  <ol class="steps">${steps.map((s,i)=>{
+    const seen = new Set((s.spots||[]).flatMap(g=>g.list.map(x=>x[1])));
+    const own = (s.ph||[]).filter(x=>!seen.has(x[1])); own.forEach(x=>seen.add(x[1]));
+    const fromQuest = (s.q||[]).flatMap(id=>(byId[id]&&byId[id].ph)||[]).filter(x=>!seen.has(x[1])&&seen.add(x[1]));
+    return `<li class="step"><div class="num"><label>${i+1}</label></div><div class="st-body">
+      <p class="st-title">${s.t}</p>
+      ${s.loc||s.gate?`<div class="tags">${s.loc?`<span class="tag loc">${s.loc}</span>`:""}${s.gate?`<span class="tag gate">${s.gate}</span>`:""}</div>`:""}
+      ${s.b?ul(s.b):""}
+      ${(s.spots||[]).map(spotGrid).join("")}
+      ${phRow(own)}
+      ${fromQuest.length?`<div class="how">More photos · Main Quest step ${s.q.map(id=>num[id]).join(", ")}</div>${phRow(fromQuest)}`:""}
+    </div></li>`;}).join("")}</ol>
+  <h3 class="sec">Tips</h3>${ul(m.wwInfo.tips)}`;
+  p.querySelectorAll(".spot img").forEach(img=>img.addEventListener("error",()=>{
+    const o=img.dataset.orig; if(o && img.src!==o){ img.src=o; return; }
+    img.closest(".spot").classList.add("spot-fail");
+  }));
 }
 
 function pMain(m,p){
@@ -502,6 +524,8 @@ function lightbox(img, caption, from){
 document.addEventListener("click",e=>{
   const big=e.target.closest("button.phbig");
   if(big){ const fig=big.closest(".phfig"), img=fig.querySelector("img"); if(img) lightbox(img, fig.querySelector("figcaption span").innerHTML, big); return; }
+  const spot=e.target.closest("button.spot-img");
+  if(spot){ const fc=spot.parentElement.querySelector("figcaption"); lightbox(spot.querySelector("img"), fc.firstChild.textContent+" · image: "+fc.querySelector("span").innerHTML, spot); return; }
   const btn=e.target.closest("button.ph[data-src]");
   if(btn){ openPhoto(btn); return; }
   const all=e.target.closest("button.phall");

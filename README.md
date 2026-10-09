@@ -2,7 +2,7 @@
 
 A Black Ops 7 Zombies guide covering all six maps. Each map has these tabs:
 
-- **Wonder Weapon:** how to build it.
+- **Wonder Weapon:** how to build it, step by step, with a photo of every possible part location (tap a thumbnail to see it full size).
 - **Main Quest:** the full quest with progress checkboxes and a Guide order / Speed route toggle.
 - **Side Eggs:** each card shows the reward first, then the steps.
 - **Relics:** how to unlock each one, with its curse and trial.

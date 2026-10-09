@@ -220,6 +220,20 @@ table.compact td{vertical-align:middle}
 .mv:fullscreen .mv-stage img,.mv.mv-full .mv-stage img{width:100%;height:100%;object-fit:contain}
 body.noscroll{overflow:hidden}
 
+/* Wonder Weapon "possible spots": always-visible thumbnail grid */
+.spots{margin-top:10px}
+.spots .how{margin:0 0 6px}
+.spot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.spot{margin:0;min-width:0}
+.spot-img{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel2);cursor:zoom-in;aspect-ratio:16/9}
+.spot-img:hover{border-color:var(--map)}
+.spot-img img{display:block;width:100%;height:100%;object-fit:cover}
+.spot figcaption{font-size:.8rem;line-height:1.3;margin-top:4px}
+.spot figcaption span{display:block;font-size:.68rem;color:var(--muted);margin-top:2px}
+.spot figcaption a{color:var(--muted)}
+.spot-fail .spot-img{display:none}
+@media (max-width:520px){.spot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 /* photo lightbox: near-full-screen image over a dimmed page */
 .lb{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:12px 12px max(12px,env(safe-area-inset-bottom,0px));border:0;background:transparent;color:#fff;overflow:hidden}
 .lb[open]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}

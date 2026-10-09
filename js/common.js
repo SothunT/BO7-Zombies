@@ -8,6 +8,11 @@ const E   = n => PX("black-ops-7-easter-egg-" + n);
 const K   = n => PX("black-ops-7-zombies-easter-egg-" + n);
 const MIX = n => PX("black-ops-7-mixologist-" + n);
 const RL  = n => PX("black-ops-7-relic-" + n);
+/* codzombiesguides.com photos (CZ) and its main-quest pages (CZQ); mmmrkennedy.com photos (MKP) and guides (MKQ) */
+const CZ  = (map, n) => "https://www.codzombiesguides.com/content/" + map + "/" + map + "-" + n + ".webp";
+const CZQ = map => "https://www.codzombiesguides.com/main-quests/black-ops-7/" + map;
+const MKP = (map, n) => "https://mmmrkennedy.com/games/BO7/" + map + "/pictures/" + n + ".webp";
+const MKQ = map => "https://mmmrkennedy.com/games/BO7/" + map + "/" + map + "_guide";
 
 /* Local file name for an image URL (must match image-list.txt, which is generated from the same rule).
    PowerPyx / Skycoach / Margwa keep their own file name; other sites get a short hash prefix so
